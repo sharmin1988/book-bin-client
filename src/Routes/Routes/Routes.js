@@ -1,3 +1,4 @@
+import AllProducts from "../../Page/CategoryProducts/AllProducts/AllProducts";
 import Login from "../../Page/Login/Login";
 import SignUp from "../../Page/Login/SignUp";
 import Blog from "../../Page/Other/Blog/Blog";
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>
+            },
+            {
+                path: '/categories/:id',
+                element: <AllProducts></AllProducts>
             },
             {
                 path: '/login',
