@@ -5,19 +5,25 @@ import PrimaryBtn from '../../../Components/PrimaryBtn';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 
 const Navbar = () => {
-    const {user} = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
 
-    const menuItems = <React.Fragment>
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(err => console.log(err));
+    }
+
+    const menuItems = <>
         <li><Link to="/" className='font-semibold text-fuchsia-700 text-lg'>Blog</Link></li>
         <li><Link to="/" className='font-semibold text-fuchsia-700 text-lg'>Dashboard</Link></li>
         <li><Link to="/about" className='font-semibold text-fuchsia-700 text-lg'>About</Link></li>
         {user?.uid ?
             <>
                 <li><Link to="/dashboard">Dashboard</Link></li>
-                <li><button >Sign out</button></li>
+                <li><button onClick={handleLogOut} >Sign out</button></li>
             </>
-            : <li><Link to="/login"><PrimaryBtn>Login</PrimaryBtn></Link></li>}
-    </React.Fragment>
+            : <Link to="/login"><PrimaryBtn>Login</PrimaryBtn></Link>}
+    </>
     return (
         <div className="navbar bg-gray-100 flex justify-between lg:px-4">
             <div className="navbar-start">

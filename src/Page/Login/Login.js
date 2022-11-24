@@ -1,27 +1,68 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Login = () => {
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { signIn } = useContext(AuthContext)
+    const [loginError, setLoginError] = useState('');
+
+    const handelLogin = data => {
+        console.log(data)
+        setLoginError('')
+        
+        signIn(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                // setLoginUserEmail(user?.email)
+            })
+            .catch(error => {
+                console.log(error.message)
+                setLoginError(error.message);
+            });
+    }
+
     return (
         <div className='container px-6 py-6 lg:py-12 mx-auto'>
             <section class="grid grid-cols-1 gap-0 lg:grid-cols-12">
                 <div class="w-full col-span-1 p-4 mx-auto mt-2 lg:col-span-8 xl:p-10 md:w-3/4 border border-fuchsia-700 rounded">
                     <h1 class="mb-4 text-3xl font-bold text-left text-fuchsia-700">Log in to your account</h1>
-                    
-                    <form class="pb-1 space-y-4">
+
+                    <form onSubmit={handleSubmit(handelLogin)} class="pb-1 space-y-4">
+
                         <label class="block">
                             <span class="block mb-1 text-sm font-medium text-gray-900">Your Email</span>
-                            <input class="bg-fuchsia-50 p-1 px-4 w-full rounded-md border border-fuchsia-700" type="email" placeholder="email" required />
+                            <input
+                                {...register("email", {
+                                    required: "Email Address is required"
+                                })}
+                                class="bg-fuchsia-50 p-1 px-4 w-full rounded-md border border-fuchsia-700" type="email" placeholder="email" />
+                            {errors.email && <p className='text-red-600 mt-1'>{errors.email?.message}</p>}
                         </label>
-                        <label class="block">
-                            <span class="block mb-1 text-sm font-medium text-gray-900">Your Password</span>
-                            <input class="bg-fuchsia-5s0 p-1 px-4 w-full rounded-md border border-fuchsia-700" type="password" placeholder="••••••••" required />
-                        </label>
-                        <input type="submit" class="btn btn-md bg-fuchsia-700 hover:bg-orange-700 w-1/2" value="Login" />
-                    </form>
 
-                    <div class="my-2 space-y-2">
-                        <p class="text-xs text-gray-700">
+
+                        <label class="block">
+                            <span class="block mb-1 text-sm font-medium text-gray-900">Password</span>
+                            <input
+                                {...register("password", {
+                                    required: "Password is required",
+                                    minLength: { value: 6, message: 'Password must be 6 characters or longer' }
+                                })}
+                                class="bg-fuchsia-5s0 p-1 px-4 w-full rounded-md border border-fuchsia-700" type="password" placeholder="••••••••" required />
+                            {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
+                        </label>
+
+                        <div className='text-center'>
+                            <input type="submit" class="btn btn-md bg-fuchsia-700 hover:bg-orange-700 w-1/2" value="Login" />
+                            {loginError && <p className='text-red-600'>{loginError}</p>}
+                        </div>
+
+                    </form>
+                    <div className='text-center my-4'>
+                        <button className='btn btn-outline btn-secondary ml-4' >Or Login with Google</button>
+                        <p class="my-2 text-xs text-gray-700">
                             Don't have an account?
                             <Link to="/signup" class=" text-fuchsia-800 font-medium hover:text-black">Create an account</Link>
                         </p>

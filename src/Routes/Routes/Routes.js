@@ -1,5 +1,6 @@
 import Login from "../../Page/Login/Login";
 import SignUp from "../../Page/Login/SignUp";
+import ErrorPage from "../../Page/Other/ErrorPage/ErrorPage";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../../Layout/Main");
@@ -9,6 +10,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement:<ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
