@@ -1,0 +1,17 @@
+[
+    {
+        "_id": 1,
+        "title": "Kids Book",
+        "image": "https://i.ibb.co/g6xbCJf/kid-2.jpg"
+    },
+    {
+        "_id": 2,
+        "title": "Romance",
+        "image": "https://i.ibb.co/VBLRgvX/huma.jpg"
+    },
+    {
+        "_id": 3,
+        "title": "Fiction",
+        "image": "https://i.ibb.co/TH5JDkp/frik-1.jpg"
+    }
+]

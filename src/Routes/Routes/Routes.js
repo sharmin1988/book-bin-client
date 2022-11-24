@@ -1,5 +1,6 @@
 import Login from "../../Page/Login/Login";
 import SignUp from "../../Page/Login/SignUp";
+import Blog from "../../Page/Other/Blog/Blog";
 import ErrorPage from "../../Page/Other/ErrorPage/ErrorPage";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
             {
                 path: '/signup',
                 element: <SignUp></SignUp>
+            },
+            {
+                path: '/blog',
+                element: <Blog></Blog>
             },
         ]
     }
