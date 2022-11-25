@@ -58,6 +58,7 @@ const BookingModal = ({ productBooking, setProductBooking }) => {
                     <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
 
                     <h3 className="text-lg font-semibold mb-5">Booking form for <span className=' text-fuchsia-700 font-bold'>{bookName}</span> book </h3>
+                    
                     {/*==================== booking form ===================== */}
                     <form onSubmit={handelBooking}>
                         <input type="text"

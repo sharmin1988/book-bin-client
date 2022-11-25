@@ -1,5 +1,7 @@
+import { async } from '@firebase/util';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
@@ -16,10 +18,42 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+
+                //--------- update user name field --------
+                const userInfo = {
+                    displayName: data.name
+                }
+                updateUser(userInfo)
+                    .then(() => {
+                        saveUserInDb(data.name, data.email, data.role)
+                        
+                    })
+                    .catch(err => console.error(err));
             })
             .catch(error => {
                 console.error(error)
                 setSignUPError(error.message)
+            })
+    }
+
+    const saveUserInDb = (name, email, role) => {
+        const user = {
+            name,
+            email,
+            role
+        }
+
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+
             })
     }
 

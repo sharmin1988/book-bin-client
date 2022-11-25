@@ -25,8 +25,8 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, provider)
     }
 
-    const updateUserProfile = (profile) => {
-        return updateProfile(auth.currentUser, profile)
+    const updateUser = (userInfo) =>{
+        return updateProfile(auth.currentUser, userInfo);
     }
 
 
@@ -51,7 +51,7 @@ const AuthProvider = ({ children }) => {
         createUser,
         signIn,
         googleSignIn,
-       updateUserProfile,
+        updateUser,
         logOut,
     }
 
