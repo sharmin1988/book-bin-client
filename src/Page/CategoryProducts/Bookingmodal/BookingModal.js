@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import PrimaryBtn from '../../../Components/PrimaryBtn';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 
@@ -7,29 +8,47 @@ const BookingModal = ({ productBooking, setProductBooking }) => {
     const { bookName, resalePrice, img } = productBooking
     const { user } = useContext(AuthContext)
 
-const handelBooking = event => {
-    event.preventDefault()
-    const form = event.target;
-    const buyerName = form.buyerName.value;
-    const buyerEmail = form.buyerEmail.value;
-    const bookName = form.bookName.value;
-    const resalePrice = form.resalePrice.value;
-    const buyerPhone = form.buyerPhone.value;
-    const buyerMeetingLocation = form.buyerMeetingLocation.value;
-    
+    const handelBooking = event => {
+        event.preventDefault()
+        const form = event.target;
+        const buyerName = form.buyerName.value;
+        const buyerEmail = form.buyerEmail.value;
+        const bookName = form.bookName.value;
+        const resalePrice = form.resalePrice.value;
+        const buyerPhone = form.buyerPhone.value;
+        const buyerMeetingLocation = form.buyerMeetingLocation.value;
 
-    const booking = {
-        buyerName,
-        buyerEmail,
-        bookName,  
-        resalePrice,
-        img, 
-        buyerPhone,  
-        buyerMeetingLocation
+
+        const booking = {
+            buyerName,
+            buyerEmail,
+            bookName,
+            resalePrice,
+            img,
+            buyerPhone,
+            buyerMeetingLocation
+        }
+        console.log(booking)
+
+        fetch('http://localhost:5000/bookings', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(booking)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.acknowledged) {
+                    setProductBooking(null);
+                    toast.success('Booking Done!!!!')
+                }
+                else {
+                    toast.error(data.message)
+                }
+            })
     }
-    console.log(booking )
-    setProductBooking(null)
-}
 
     return (
         <>
