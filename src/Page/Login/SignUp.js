@@ -1,17 +1,23 @@
-import { async } from '@firebase/util';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import useToken from '../../hooks/useToken';
 
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { createUser, updateUser } = useContext(AuthContext);
     const [signUpError, setSignUPError] = useState('')
+    const [createdUserEmail, setCreatedUserEmail] = useState('')
+    const [token] = useToken(createdUserEmail)
+    const navigate = useNavigate()
+
+    if(token){
+        return navigate('/')
+    }
 
     const handelSignUp = data => {
-        console.log(data)
+        // console.log(data)
         setSignUPError('');
 
         createUser(data.email, data.password)
@@ -25,8 +31,7 @@ const SignUp = () => {
                 }
                 updateUser(userInfo)
                     .then(() => {
-                        saveUserInDb(data.name, data.email, data.role)
-                        
+                        saveUserInDb(data.name, data.email, data.role)    
                     })
                     .catch(err => console.error(err));
             })
@@ -52,8 +57,8 @@ const SignUp = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
-
+                // console.log(data);
+                setCreatedUserEmail(email)
             })
     }
 

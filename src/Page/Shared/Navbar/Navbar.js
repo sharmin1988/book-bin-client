@@ -18,7 +18,7 @@ const Navbar = () => {
         <li><Link to="/about" className='font-semibold text-fuchsia-700 text-lg'>About</Link></li>
         {user?.uid ?
             <>
-                <li><Link to="/" className='font-semibold text-fuchsia-700 text-lg'>Dashboard</Link></li>
+                <li><Link to="/dashboard" className='font-semibold text-fuchsia-700 text-lg'>Dashboard</Link></li>
                 <Link to='/'><button className="w-full  px-6 font-semibold py-2.5 text-sm text-white uppercase  bg-fuchsia-700 rounded-md lg:w-auto hover:bg-stone-600 btn focus:outline-none focus:bg-purple-500" onClick={handleLogOut} >Sign out</button></Link>
             </>
             : <Link to="/login"><PrimaryBtn>Login</PrimaryBtn></Link>}
