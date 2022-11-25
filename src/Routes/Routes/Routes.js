@@ -1,4 +1,5 @@
 import AllProducts from "../../Page/CategoryProducts/AllProducts/AllProducts";
+import AllSellers from "../../Page/Dashboard/Admin/AllSellers/AllSellers";
 import DashBoardLayout from "../../Page/Dashboard/DashBoardLayout/DashBoardLayout";
 import MyOrders from "../../Page/Dashboard/MyOrders/MyOrders";
 import Login from "../../Page/Login/Login";
@@ -45,6 +46,14 @@ const router = createBrowserRouter([
         element: <PrivateRoute><DashBoardLayout></DashBoardLayout></PrivateRoute>,
         errorElement:<ErrorPage></ErrorPage>,
         children: [
+            {
+                path:'/dashboard',
+                element:<MyOrders></MyOrders>
+            },
+            {
+                path:'/dashboard/admin/allSeller',
+                element:<AllSellers></AllSellers>
+            },
             {
                 path:'/dashboard',
                 element:<MyOrders></MyOrders>

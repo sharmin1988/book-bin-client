@@ -12,7 +12,7 @@ const BookingModal = ({ productBooking, setProductBooking }) => {
         event.preventDefault()
         const form = event.target;
         const buyerName = form.buyerName.value;
-        const buyerEmail = form.buyerEmail.value;
+        const email = form.buyerEmail.value;
         const bookName = form.bookName.value;
         const resalePrice = form.resalePrice.value;
         const buyerPhone = form.buyerPhone.value;
@@ -21,7 +21,7 @@ const BookingModal = ({ productBooking, setProductBooking }) => {
 
         const booking = {
             buyerName,
-            buyerEmail,
+            email,
             bookName,
             resalePrice,
             img,
