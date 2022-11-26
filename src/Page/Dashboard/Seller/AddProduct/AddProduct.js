@@ -13,7 +13,7 @@ const AddProduct = () => {
     const current = new Date();
     const date = `${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit,} = useForm();
     const handelAddProduct = data => {
         // console.log(data)
 
@@ -74,7 +74,7 @@ const AddProduct = () => {
 
     return (
         <div>
-            <Title>Add your product for sell !!</Title>
+            <Title>Add your product for sell</Title>
             <div className='my-4'>
                 <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md border border-fuchsia-300">
 

@@ -3,7 +3,6 @@ import AllBuyers from "../../Page/Dashboard/Admin/AllBuyers/AllBuyers";
 import AllSellers from "../../Page/Dashboard/Admin/AllSellers/AllSellers";
 import Dashboard from "../../Page/Dashboard/Dashboard/Dashboard";
 import DashBoardLayout from "../../Page/Dashboard/DashBoardLayout/DashBoardLayout";
-import MyOrders from "../../Page/Dashboard/MyOrders/MyOrders";
 import AddProduct from "../../Page/Dashboard/Seller/AddProduct/AddProduct";
 import MyProducts from "../../Page/Dashboard/Seller/MyProducts/MyProducts";
 import Login from "../../Page/Login/Login";
