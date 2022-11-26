@@ -4,6 +4,7 @@ import useAdmin from '../../../hooks/useAdmin';
 import useSeller from '../../../hooks/useSeller';
 import AllSellers from '../Admin/AllSellers/AllSellers';
 import MyOrders from '../MyOrders/MyOrders';
+import AddProduct from '../Seller/AddProduct/AddProduct';
 
 const Dashboard = () => {
     const { user } = useContext(AuthContext)
@@ -11,7 +12,7 @@ const Dashboard = () => {
     const [isSeller] = useSeller(user?.email)
     return (
         <div>
-            {isSeller && <AllSellers></AllSellers>}
+            {isSeller && <AddProduct></AddProduct>}
             {isAdmin && <AllSellers></AllSellers>}
             {!isAdmin && !isSeller && <MyOrders></MyOrders>}
         </div>

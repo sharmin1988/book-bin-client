@@ -4,12 +4,15 @@ import AllSellers from "../../Page/Dashboard/Admin/AllSellers/AllSellers";
 import Dashboard from "../../Page/Dashboard/Dashboard/Dashboard";
 import DashBoardLayout from "../../Page/Dashboard/DashBoardLayout/DashBoardLayout";
 import MyOrders from "../../Page/Dashboard/MyOrders/MyOrders";
+import AddProduct from "../../Page/Dashboard/Seller/AddProduct/AddProduct";
+import MyProducts from "../../Page/Dashboard/Seller/MyProducts/MyProducts";
 import Login from "../../Page/Login/Login";
 import SignUp from "../../Page/Login/SignUp";
 import Blog from "../../Page/Other/Blog/Blog";
 import ErrorPage from "../../Page/Other/ErrorPage/ErrorPage";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import SellerRoute from "../SellerRoute/SellerRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../../Layout/Main");
@@ -53,6 +56,8 @@ const router = createBrowserRouter([
                 path:'/dashboard',
                 element:<Dashboard></Dashboard>
             },
+
+            // Admin access routes
             {
                 path:'/dashboard/admin/allSellers',
                 element:<AdminRoute><AllSellers></AllSellers></AdminRoute>
@@ -61,6 +66,16 @@ const router = createBrowserRouter([
                 path:'/dashboard/admin/allBuyers',
                 element:<AdminRoute><AllBuyers></AllBuyers></AdminRoute>
             },
+
+            // Seller access routes
+            {
+                path: '/dashboard/seller/addProduct',
+                element: <SellerRoute><AddProduct></AddProduct></SellerRoute>
+            },
+            {
+                path: '/dashboard/seller/myProducts',
+                element:<SellerRoute><MyProducts></MyProducts></SellerRoute>
+            }, // ********* my buyers route Add korte hobe??????********
         ]
     }
 ])
