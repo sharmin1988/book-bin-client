@@ -20,7 +20,6 @@ const Login = () => {
     }
 
     const handelLogin = data => {
-        console.log(data)
         setLoginError('')
         
         signIn(data.email, data.password)

@@ -3,6 +3,7 @@ import AllBuyers from "../../Page/Dashboard/Admin/AllBuyers/AllBuyers";
 import AllSellers from "../../Page/Dashboard/Admin/AllSellers/AllSellers";
 import Dashboard from "../../Page/Dashboard/Dashboard/Dashboard";
 import DashBoardLayout from "../../Page/Dashboard/DashBoardLayout/DashBoardLayout";
+import MyOrders from "../../Page/Dashboard/MyOrders/MyOrders";
 import AddProduct from "../../Page/Dashboard/Seller/AddProduct/AddProduct";
 import MyProducts from "../../Page/Dashboard/Seller/MyProducts/MyProducts";
 import Login from "../../Page/Login/Login";
@@ -10,6 +11,7 @@ import SignUp from "../../Page/Login/SignUp";
 import Blog from "../../Page/Other/Blog/Blog";
 import ErrorPage from "../../Page/Other/ErrorPage/ErrorPage";
 import AdminRoute from "../AdminRoute/AdminRoute";
+import BuyerRoute from "../BuyerRoute/BuyerRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import SellerRoute from "../SellerRoute/SellerRoute";
 
@@ -30,7 +32,7 @@ const router = createBrowserRouter([
             {
                 path: '/categories/:id',
                 loader: ({params}) => fetch(`http://localhost:5000/categories/${params.id}`),
-                element: <AllProducts></AllProducts>
+                element: <PrivateRoute><AllProducts></AllProducts></PrivateRoute>
             },
             {
                 path: '/login',
@@ -56,6 +58,11 @@ const router = createBrowserRouter([
                 element:<Dashboard></Dashboard>
             },
 
+            {
+                path:'/dashboard/buyer/myProducts',
+                element: <BuyerRoute><MyOrders></MyOrders></BuyerRoute>
+            },
+
             // Admin access routes
             {
                 path:'/dashboard/admin/allSellers',
@@ -74,7 +81,7 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/seller/myProducts',
                 element:<SellerRoute><MyProducts></MyProducts></SellerRoute>
-            }, // ********* my buyers route Add korte hobe??????********
+            }, 
         ]
     }
 ])

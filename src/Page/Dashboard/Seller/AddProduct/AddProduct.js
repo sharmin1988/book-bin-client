@@ -76,39 +76,39 @@ const AddProduct = () => {
         <div>
             <Title>Add your product for sell</Title>
             <div className='my-4'>
-                <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md border border-fuchsia-300">
+                <section className="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md border border-fuchsia-300">
 
                     <form onSubmit={handleSubmit(handelAddProduct)}>
-                        <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
+                        <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
                             <div>
-                                <label class="text-xs font-medium text-gray-900 ">Seller Name</label>
+                                <label className="text-xs font-medium text-gray-900 ">Seller Name</label>
                                 <input type="text"
                                     disabled
                                     defaultValue={user?.displayName}
-                                    class="block w-full px-4 py-1 mt-1 text-gray-700 bg-gray-100 border border-fuchsia-300 rounded-md    focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" />
+                                    className="block w-full px-4 py-1 mt-1 text-gray-700 bg-gray-100 border border-fuchsia-300 rounded-md    focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" />
                             </div>
 
                             <div>
-                                <label class="text-xs font-medium text-gray-900 " >Email </label>
+                                <label className="text-xs font-medium text-gray-900 " >Email </label>
                                 <input type="email"
                                     disabled
                                     defaultValue={user?.email}
-                                    class="block w-full px-4 py-1 mt-1 text-gray-700 bg-gray-100 border border-fuchsia-300  rounded-md    focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" />
+                                    className="block w-full px-4 py-1 mt-1 text-gray-700 bg-gray-100 border border-fuchsia-300  rounded-md    focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" />
                             </div>
                             <div>
-                                <label class="text-xs font-medium text-gray-900 " >Date</label>
+                                <label className="text-xs font-medium text-gray-900 " >Date</label>
                                 <input type="text"
                                     disabled
                                     defaultValue={date}
-                                    class="block w-full px-4 py-1 mt-1 text-gray-700 bg-gray-100 border border-fuchsia-300  rounded-md    focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" />
+                                    className="block w-full px-4 py-1 mt-1 text-gray-700 bg-gray-100 border border-fuchsia-300  rounded-md    focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" />
                             </div>
 
                             <div>
-                                <label class="text-xs font-medium text-gray-900 " >Contact number</label>
+                                <label className="text-xs font-medium text-gray-900 " >Contact number</label>
                                 <input type="text"
                                     {...register("phone")}
                                     required
-                                    class="block w-full px-4 py-1 mt-1 text-gray-700 bg-white border border-fuchsia-300  rounded-md    focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" />
+                                    className="block w-full px-4 py-1 mt-1 text-gray-700 bg-white border border-fuchsia-300  rounded-md    focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" />
                             </div>
 
                             {/*------------------------ Product info add fields ----------------------------------*/}
@@ -127,47 +127,47 @@ const AddProduct = () => {
                             </div>
 
                             <div>
-                                <label class="text-xs font-medium text-gray-900 ">Product name</label>
+                                <label className="text-xs font-medium text-gray-900 ">Product name</label>
                                 <input
                                     {...register("bookName")}
                                     required
                                     type="text"
-                                    class="block w-full px-4 py-1 mt-1 text-gray-700 bg-white border border-fuchsia-300  rounded-md    focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" />
+                                    className="block w-full px-4 py-1 mt-1 text-gray-700 bg-white border border-fuchsia-300  rounded-md    focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" />
                             </div>
                             <div>
-                                <label class="text-xs font-medium text-gray-900 ">Location</label>
+                                <label className="text-xs font-medium text-gray-900 ">Location</label>
                                 <input
                                     {...register("location")}
                                     required
                                     type="text"
-                                    class="block w-full px-4 py-1 mt-1 text-gray-700 bg-white border border-fuchsia-300  rounded-md    focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" />
+                                    className="block w-full px-4 py-1 mt-1 text-gray-700 bg-white border border-fuchsia-300  rounded-md    focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" />
                             </div>
                             <div>
-                                <label class="text-xs font-medium text-gray-900 ">Original price</label>
+                                <label className="text-xs font-medium text-gray-900 ">Original price</label>
                                 <input
                                     {...register("originalPrice")}
                                     required
                                     type="text"
-                                    class="block w-full px-4 py-1 mt-1 text-gray-700 bg-white border border-fuchsia-300  rounded-md    focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" />
+                                    className="block w-full px-4 py-1 mt-1 text-gray-700 bg-white border border-fuchsia-300  rounded-md    focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" />
                             </div>
                             <div>
-                                <label class="text-xs font-medium text-gray-900 ">Resale price</label>
+                                <label className="text-xs font-medium text-gray-900 ">Resale price</label>
                                 <input
                                     {...register("resalePrice")}
                                     required
                                     type="text"
-                                    class="block w-full px-4 py-1 mt-1 text-gray-700 bg-white border border-fuchsia-300  rounded-md    focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" />
+                                    className="block w-full px-4 py-1 mt-1 text-gray-700 bg-white border border-fuchsia-300  rounded-md    focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" />
                             </div>
                             <div>
-                                <label class="text-xs font-medium text-gray-900 ">Years of use</label>
+                                <label className="text-xs font-medium text-gray-900 ">Years of use</label>
                                 <input
                                     {...register("yearsOfUse")}
                                     required
                                     type="text"
-                                    class="block w-full px-4 py-1 mt-1 text-gray-700 bg-white border border-fuchsia-300  rounded-md    focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" />
+                                    className="block w-full px-4 py-1 mt-1 text-gray-700 bg-white border border-fuchsia-300  rounded-md    focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" />
                             </div>
                             <div>
-                                <label class="text-xs font-medium text-gray-900 ">Condition</label>
+                                <label className="text-xs font-medium text-gray-900 ">Condition</label>
                                 <select
                                     {...register("condition")}
                                     required
@@ -178,16 +178,16 @@ const AddProduct = () => {
                                 </select>
                             </div>
                             <div>
-                                <label class="text-xs font-medium text-gray-900 ">Description</label>
+                                <label className="text-xs font-medium text-gray-900 ">Description</label>
                                 <input
                                     {...register("description")}
                                     required
                                     type="text"
-                                    class="block w-full px-4 py-1 mt-1 text-gray-700 bg-white border border-fuchsia-300  rounded-md    focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" />
+                                    className="block w-full px-4 py-1 mt-1 text-gray-700 bg-white border border-fuchsia-300  rounded-md    focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" />
                             </div>
 
                             <div>
-                                <label class="text-xs font-medium text-gray-900">Product image</label>
+                                <label className="text-xs font-medium text-gray-900">Product image</label>
                                 <input
                                     {...register("img")}
                                     required
@@ -195,8 +195,8 @@ const AddProduct = () => {
                             </div>
                         </div>
 
-                        <div class="flex justify-end mt-6">
-                            <button class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Save</button>
+                        <div className="flex justify-end mt-6">
+                            <button className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Save</button>
                         </div>
                     </form>
                 </section>

@@ -6,7 +6,9 @@ import ProductCard from '../ProductCard/ProductCard';
 
 const AllProducts = () => {
     const products = useLoaderData()
-    const [productBooking, setProductBooking] = useState()
+    const [productBooking, setProductBooking] = useState(null)
+
+    
 
     return (
         <div className='container px-8 py-6  mx-auto'>
