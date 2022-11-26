@@ -2,8 +2,7 @@ import React from 'react';
 
 const ProductCard = ({ product, setProductBooking }) => {
 
-    const { 
-        category,
+    const {
         bookName,
         img,
         postDate,
@@ -18,7 +17,7 @@ const ProductCard = ({ product, setProductBooking }) => {
         email } = product
 
     return (
-        <div className="overflow-hidden shadow-lg rounded-lg h-90 w-60 md:w-80 cursor-pointer m-auto">
+        <div className="overflow-hidden shadow-md rounded-md  w-full md:max-w-md m-auto">
             <div className="w-full block h-full">
                 <img alt="" src={img} className="max-h-56 w-full " />
 
@@ -40,7 +39,7 @@ const ProductCard = ({ product, setProductBooking }) => {
                         <div className="flex flex-col justify-between font-semibold">
                             <p className="text-black text-sm font-medium">Condition: {condition}</p>
                             <p className="text-gray-800 text-xs ">Years of use: {yearsOfUse} years</p>
-                            <p className="text-gray-800  text-xs">Category: {category}</p>
+                            
                         </div>
 
                         <div className="flex flex-col justify-between ml-4 text-sm">
