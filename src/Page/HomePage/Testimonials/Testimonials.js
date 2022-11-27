@@ -2,7 +2,7 @@ import React from 'react';
 
 const Testimonials = () => {
     return (
-        <div className='container px-6 py-6 lg:pb-32 mx-auto'>
+        <div className='container px-6 pb-6 lg:pb-32 mx-auto'>
             <section className="bg-white">
     <div className="relative flex">
         <div className="min-h-screen lg:w-1/3"></div>
@@ -19,17 +19,16 @@ const Testimonials = () => {
 
                 <div className="mt-8 lg:px-10 lg:mt-0">
                     <h1 className="text-2xl font-semibold text-gray-800 dark:text-white lg:w-72">
-                        Help us improve our productivity
+                        Help us improve our productivity in a pocket budget!!
                     </h1>
 
                     <p className="max-w-lg mt-6 text-gray-500 dark:text-gray-400">
-                        “ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quibusdam ducimus libero ad
-                        tempora doloribus expedita laborum saepe voluptas perferendis delectus assumenda rerum, culpa
-                        aperiam dolorum, obcaecati corrupti aspernatur a. ”
+                        “ Great service! I ordered 3 copies of a book for my middle school book club. The books arrived promptly. Great price on the books, too! All around it was a win!.
+                        Very pleased with purchase. All the books came in great condition and fast. My grandson loves his new books.I'll be back!”
                     </p>
 
                     <h3 className="mt-6 text-lg font-medium text-blue-500">Ronika Ederson</h3>
-                    <p className="text-gray-600 dark:text-gray-300">Marketing student at Stech</p>
+                    <p className="text-gray-600 dark:text-gray-300">Marketing student</p>
                 </div>
             </div>
 

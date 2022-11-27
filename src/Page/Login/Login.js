@@ -5,11 +5,11 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import useToken from '../../hooks/useToken';
 
 const Login = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
     const { signIn } = useContext(AuthContext)
     const [loginError, setLoginError] = useState('');
     const [loginUserEmail, setLoginUserEmail] = useState('')
     const [token] = useToken(loginUserEmail)
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
     const location = useLocation();
     const navigate = useNavigate();

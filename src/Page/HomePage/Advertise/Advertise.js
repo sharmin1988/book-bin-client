@@ -26,7 +26,7 @@ const Advertise = () => {
 
     if (adProducts) {
         return (
-            <div className='container px-8 py-6 lg:py-10'>
+            <div className='container px-8 py-6 lg:py-12'>
                 <Title>Advertise</Title>
                 <div className="max-w-screen-xl p-5 mx-auto  text-gray-100">
                     <div className="grid grid-cols-1 gap-5 lg:grid-cols-4 sm:grid-cols-2">

@@ -14,7 +14,7 @@ const Banner = () => {
                         <div className="lg:max-w-xl">
                             <h1 className="text-2xl font-bold text-gray-800 lg:text-5xl">Best Place To sell / buy Your <span className=' text-fuchsia-700'>used Books</span> !!</h1>
 
-                            <p className="my-4 text-gray-600 dark:text-gray-400">Here on Happy Toast, I share authentic foods. You Can enjoy the super healthy tasty foods, along with family ,favorites from around .My "moto" is <br /> "foods are prepared with attention, packaged with care and <br /> delivered with love" </p>
+                            <p className="my-4 text-gray-600 dark:text-gray-400">We've been selling cheap used books since 2012. Discover gently used books for sale from sellers around the world. By shopping for used items, you can save money, be sustainable, support independent booksellers, and find great books to read</p>
 
                             <Link to='/'><PrimaryBtn>Explore more</PrimaryBtn></Link>
                         </div>
