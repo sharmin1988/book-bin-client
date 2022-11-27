@@ -1,8 +1,9 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const ProductCard = ({ product, setProductBooking }) => {
 
-    const {
+    const { _id,
         bookName,
         img,
         postDate,
@@ -16,6 +17,40 @@ const ProductCard = ({ product, setProductBooking }) => {
         phone,
         email,
         sellerVerified } = product
+
+    const reportProduct = {
+        productId: _id,
+        img,
+        resalePrice,
+        bookName,
+        seller,
+        email
+    }
+
+    const handelReport = () => {
+        const proceed = window.confirm('Are you sure you want to report this product to the admin!!!')
+        if (proceed) {
+            fetch(`http://localhost:5000/report`, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                },
+                body: JSON.stringify(reportProduct)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.acknowledged) {
+                        setProductBooking(null);
+                        toast.success('Report Done!!!!')
+                    }
+                    else {
+                        toast.error(data.message)
+                    }
+                })
+        }
+    }
 
     return (
         <div className="overflow-hidden shadow-md rounded-md  w-full md:max-w-md m-auto">
@@ -47,25 +82,27 @@ const ProductCard = ({ product, setProductBooking }) => {
                             <p className="text-black text-sm font-medium">Contact info:</p>
                             <div>
                                 {
-                                    sellerVerified?<>
-                                    <div className='flex items-center justify-evenly '>
-                                        <img className='h-4 w-4' src="https://cdn-icons-png.flaticon.com/128/811/811868.png" alt="" />
-                                        <p className="text-gray-800 ">{seller}</p>
-                                    </div>
+                                    sellerVerified ? <>
+                                        <div className='flex items-center justify-evenly '>
+                                            <img className='h-4 w-4' src="https://cdn-icons-png.flaticon.com/128/811/811868.png" alt="" />
+                                            <p className="text-gray-800 ">{seller}</p>
+                                        </div>
                                     </>
-                                    :<p className="text-gray-800 ">{seller}</p>
+                                        : <p className="text-gray-800 ">{seller}</p>
                                 }
                             </div>
                             <p className="text-gray-600 ">{email}</p>
                             <p className="text-gray-600 ">{phone}</p>
                         </div>
                     </div>
-                    <div className=' mt-3'>
+                    <div className='flex justify-around mt-3'>
+                        <button onClick={handelReport} className='btn btn-outline'>Report to admin</button>
                         <label
                             htmlFor="booking-modal"
                             onClick={() => setProductBooking(product)}
-                            className="w-full btn px-6 font-semibold  text-sm text-white uppercase  bg-fuchsia-700 rounded-md hover:bg-stone-600 focus:outline-none focus:bg-purple-500"
+                            className=" btn w-1/2 px-6 font-semibold  text-sm text-white uppercase  bg-fuchsia-700 rounded-md hover:bg-stone-600 focus:outline-none focus:bg-purple-500"
                         >Book now</label>
+
                     </div>
                 </div>
             </div>

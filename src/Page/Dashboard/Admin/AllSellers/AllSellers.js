@@ -14,14 +14,15 @@ const AllSellers = () => {
     const [isAdmin] = useAdmin(email)
 
     const { data: allSellers, isLoading, refetch } = useQuery({
-        queryKey: ['allSellers', email],
+        queryKey: ['allSellers',],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/admin/allSellers/${email}`, {
+            const res = await fetch(`http://localhost:5000/admin/allSellers`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
             })
             const data = await res.json()
+            console.log(data)
             return data;
         }
     })
@@ -105,7 +106,7 @@ const AllSellers = () => {
                             </thead>
                             <tbody>
                                 {
-                                    allSellers.map((seller, i) => <tr
+                                    allSellers?.map((seller, i) => <tr
                                         key={seller._id}>
                                         <th>{i + 1}</th>
                                         <td>{seller.name}</td>

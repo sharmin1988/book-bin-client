@@ -1,6 +1,7 @@
 import AllProducts from "../../Page/CategoryProducts/AllProducts/AllProducts";
 import AllBuyers from "../../Page/Dashboard/Admin/AllBuyers/AllBuyers";
 import AllSellers from "../../Page/Dashboard/Admin/AllSellers/AllSellers";
+import ReportedProducts from "../../Page/Dashboard/Admin/ReportedProducts/ReportedProducts";
 import Dashboard from "../../Page/Dashboard/Dashboard/Dashboard";
 import DashBoardLayout from "../../Page/Dashboard/DashBoardLayout/DashBoardLayout";
 import MyOrders from "../../Page/Dashboard/MyOrders/MyOrders";
@@ -77,6 +78,10 @@ const router = createBrowserRouter([
             {
                 path:'/dashboard/admin/allBuyers',
                 element:<AdminRoute><AllBuyers></AllBuyers></AdminRoute>
+            },
+            {
+                path:'/dashboard/admin/reportedProducts',
+                element:<AdminRoute><ReportedProducts></ReportedProducts></AdminRoute>
             },
 
             // Seller access routes
