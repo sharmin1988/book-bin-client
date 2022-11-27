@@ -22,7 +22,7 @@ const Advertise = () => {
         return <Loader></Loader>
     }
 
-    const adProducts = products.filter(p => p.advertise)
+    const adProducts = products.filter(p => p.advertise && !p.isSold)
 
     if (adProducts) {
         return (

@@ -11,7 +11,7 @@ const AllProducts = () => {
     const { categoryId } = category
     const [productBooking, setProductBooking] = useState(null)
 
-    const { data: products, isLoading } = useQuery({
+    const { data: allProducts, isLoading } = useQuery({
         queryKey: ['categories', categoryId],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/categories/allProducts/${categoryId}`, {
@@ -27,6 +27,8 @@ const AllProducts = () => {
     if (isLoading) {
         return <Loader></Loader>
     }
+
+    const products = allProducts.filter(product => !product.isSold)
 
     return (
         <div className='container px-8 py-6  mx-auto'>

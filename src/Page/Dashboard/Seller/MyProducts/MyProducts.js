@@ -105,7 +105,10 @@ const MyProducts = () => {
                                     <td>{product.bookName}</td>
                                     <td>${product.resalePrice}</td>
                                     <td>
-                                        available
+                                        {
+                                            product?.isSold?<p className='text-sm font-semibold text-red-600'>Sold</p>
+                                            :<p className='text-sm font-semibold text-green-600'>UnSold</p>
+                                        }
                                     </td>
                                     <th>
                                         {

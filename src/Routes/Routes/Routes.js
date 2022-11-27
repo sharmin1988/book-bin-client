@@ -4,6 +4,7 @@ import AllSellers from "../../Page/Dashboard/Admin/AllSellers/AllSellers";
 import Dashboard from "../../Page/Dashboard/Dashboard/Dashboard";
 import DashBoardLayout from "../../Page/Dashboard/DashBoardLayout/DashBoardLayout";
 import MyOrders from "../../Page/Dashboard/MyOrders/MyOrders";
+import Payment from "../../Page/Dashboard/Payment/Payment";
 import AddProduct from "../../Page/Dashboard/Seller/AddProduct/AddProduct";
 import MyProducts from "../../Page/Dashboard/Seller/MyProducts/MyProducts";
 import Login from "../../Page/Login/Login";
@@ -61,6 +62,11 @@ const router = createBrowserRouter([
             {
                 path:'/dashboard/buyer/myProducts',
                 element: <BuyerRoute><MyOrders></MyOrders></BuyerRoute>
+            },
+            {
+                path:'/dashboard/buyer/myProducts/payment/:id',
+                loader: ({params}) => fetch(`http://localhost:5000/dashboard/payment/${params.id}`),
+                element: <BuyerRoute><Payment></Payment></BuyerRoute>
             },
 
             // Admin access routes
