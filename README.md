@@ -1,12 +1,13 @@
 # My project name : `Book B!n`
-It's a used books buy/sell based projects.
-* i use admin specific dashboard, <br/>
+It's a used books buy/sell based projects.i use admin, seller, buyer specific dashboard....
+
+* `admin dashboard`, <br/>
 ##### `Admin id`: rasna@sharmin.com <br/>
 ##### `Admin password`: 123456  <br/>
-* i use seller specific dashboard,<br/>
-== for `seller route` you must select seller field during signUp.<br/>
-* i use buyer specific dashboard, <br/>
-== Login with google and other signUp by default count you as `buyer`. <br/>
+* `seller dashboard`,<br/>
+--- for `seller route` you must select seller field during signUp.<br/>
+* `buyer dashboard`, <br/>
+--- Login with google and other signUp by default count you as `buyer`. <br/>
 
 ## Project live link: 
 

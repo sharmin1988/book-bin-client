@@ -14,7 +14,8 @@ const ProductCard = ({ product, setProductBooking }) => {
         description,
         seller,
         phone,
-        email } = product
+        email,
+        sellerVerified } = product
 
     return (
         <div className="overflow-hidden shadow-md rounded-md  w-full md:max-w-md m-auto">
@@ -39,12 +40,22 @@ const ProductCard = ({ product, setProductBooking }) => {
                         <div className="flex flex-col justify-between font-semibold">
                             <p className="text-black text-sm font-medium">Condition: {condition}</p>
                             <p className="text-gray-800 text-xs ">Years of use: {yearsOfUse} years</p>
-                            
+
                         </div>
 
                         <div className="flex flex-col justify-between ml-4 text-sm">
                             <p className="text-black text-sm font-medium">Contact info:</p>
-                            <p className="text-gray-800 ">{seller}</p>
+                            <div>
+                                {
+                                    sellerVerified?<>
+                                    <div className='flex items-center justify-evenly '>
+                                        <img className='h-4 w-4' src="https://cdn-icons-png.flaticon.com/128/811/811868.png" alt="" />
+                                        <p className="text-gray-800 ">{seller}</p>
+                                    </div>
+                                    </>
+                                    :<p className="text-gray-800 ">{seller}</p>
+                                }
+                            </div>
                             <p className="text-gray-600 ">{email}</p>
                             <p className="text-gray-600 ">{phone}</p>
                         </div>
@@ -52,7 +63,7 @@ const ProductCard = ({ product, setProductBooking }) => {
                     <div className=' mt-3'>
                         <label
                             htmlFor="booking-modal"
-                            onClick={() => setProductBooking(product) }
+                            onClick={() => setProductBooking(product)}
                             className="w-full btn px-6 font-semibold  text-sm text-white uppercase  bg-fuchsia-700 rounded-md hover:bg-stone-600 focus:outline-none focus:bg-purple-500"
                         >Book now</label>
                     </div>
