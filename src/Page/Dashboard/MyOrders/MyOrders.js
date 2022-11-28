@@ -4,10 +4,11 @@ import { useQuery } from '@tanstack/react-query';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import Loader from '../../Shared/Loader/Loader';
 import useBuyer from '../../../hooks/useBuyer';
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const MyOrders = () => {
     const { user } = useContext(AuthContext)
+    // const allProductsInDb = useLoaderData()
     const { email } = user
     const [isBuyer] = useBuyer(email)
 
@@ -27,6 +28,8 @@ const MyOrders = () => {
     if (isLoading) {
         return <Loader></Loader>
     }
+
+    
 
     return (
         <div>

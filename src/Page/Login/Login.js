@@ -1,3 +1,4 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -5,7 +6,8 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import useToken from '../../hooks/useToken';
 
 const Login = () => {
-    const { signIn } = useContext(AuthContext)
+    const { signIn, googleSignIn } = useContext(AuthContext)
+    const provider = new GoogleAuthProvider()
     const [loginError, setLoginError] = useState('');
     const [loginUserEmail, setLoginUserEmail] = useState('')
     const [token] = useToken(loginUserEmail)
@@ -15,18 +17,59 @@ const Login = () => {
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
 
-    if(token){
+    if (token) {
         return navigate(from, { replace: true })
     }
 
     const handelLogin = data => {
         setLoginError('')
-        
+
         signIn(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
                 setLoginUserEmail(user?.email)
+            })
+            .catch(error => {
+                console.log(error.message)
+                setLoginError(error.message);
+            });
+    }
+
+    const handelGoogleLogin = () => {
+        googleSignIn(provider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                
+                const googleUser = {
+                    name: user?.displayName,
+                    email: user?.email,
+                    role: 'buyer'
+                }
+
+                fetch(`http://localhost:5000/users/${googleUser?.email}`, {
+                    headers:{
+                        authorization: `bearer ${localStorage.getItem('accessToken')}`
+                    }
+                })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                })
+
+                // fetch('http://localhost:5000/users', {
+                //     method: 'POST',
+                //     headers: {
+                //         'content-type': 'application/json'
+                //     },
+                //     body: JSON.stringify(googleUser)
+                // })
+                //     .then(res => res.json())
+                //     .then(data => {
+                //         // console.log(data);
+                //         setLoginUserEmail(user?.email)
+                //     })
             })
             .catch(error => {
                 console.log(error.message)
@@ -71,7 +114,7 @@ const Login = () => {
 
                     </form>
                     <div className='text-center my-4'>
-                        <button className='btn btn-outline btn-secondary ml-4' >Or Login with Google</button>
+                        <button onClick={handelGoogleLogin} className='btn btn-outline btn-secondary ml-4' >Login with Google</button>
                         <p className="my-2 text-xs text-gray-700">
                             Don't have an account?
                             <Link to="/signup" className=" text-fuchsia-800 font-medium hover:text-black">Create an account</Link>
