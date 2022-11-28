@@ -49,7 +49,6 @@ const AddProduct = () => {
                         email: user?.email,
                         postDate: date
                     }
-                    console.log(product)
 
                     // save product in dataBase
                     fetch('http://localhost:5000/products', {
@@ -62,7 +61,6 @@ const AddProduct = () => {
                     })
                         .then(res => res.json())
                         .then(data => {
-                            console.log(data)
                             if(data.acknowledged){
                                 toast.success('product successfully added')
                                 navigate('/dashboard/seller/myProducts')

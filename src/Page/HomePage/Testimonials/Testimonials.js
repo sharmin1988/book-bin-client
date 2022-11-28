@@ -2,7 +2,7 @@ import React from 'react';
 
 const Testimonials = () => {
     return (
-        <div className='container px-6 pb-6 lg:pb-32 mx-auto'>
+        <div className='container px-6 pb-6 mt-8 lg:pb-32 mx-auto'>
             <section className="bg-white">
     <div className="relative flex">
         <div className="min-h-screen lg:w-1/3"></div>

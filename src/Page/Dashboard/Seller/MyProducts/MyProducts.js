@@ -22,7 +22,6 @@ const MyProducts = () => {
                 }
             })
             const data = await res.json()
-            console.log(data)
             return data
         }
     })
@@ -52,7 +51,7 @@ const MyProducts = () => {
     }
 
     const handelAdvertise = id => {
-        fetch(`http://localhost:5000/products/${id}`, {
+        fetch(`http://localhost:5000/products/${id}/?email=${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

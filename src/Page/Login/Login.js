@@ -11,7 +11,7 @@ const Login = () => {
     const provider = new GoogleAuthProvider()
     const [loginError, setLoginError] = useState('');
     const [loginUserEmail, setLoginUserEmail] = useState('')
-    const [token] = useToken(loginUserEmail)
+    const [token, tokenError] = useToken(loginUserEmail)
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const location = useLocation();
@@ -28,12 +28,13 @@ const Login = () => {
         signIn(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                console.log(user.email);
                 setLoginUserEmail(user?.email)
             })
             .catch(error => {
                 console.log(error.message)
                 setLoginError(error.message);
+
             });
     }
 
@@ -45,7 +46,6 @@ const Login = () => {
                 fetch(`http://localhost:5000/users/${user?.email}`)
                     .then(res => res.json())
                     .then(data => {
-
                         if (data.noUser) {
 
                             // new user create and save in DB
@@ -113,7 +113,8 @@ const Login = () => {
 
                         <div className='text-center'>
                             <input type="submit" className="btn btn-md bg-fuchsia-700 hover:bg-orange-700 w-1/2" value="Login" />
-                            {loginError && <p className='text-red-600'>{loginError}</p>}
+                            {loginError && <p className='text-red-600 mt-3'>{loginError}</p>}
+                            {tokenError && <p className='text-red-600 mt-3'>{tokenError}</p>}
                         </div>
 
                     </form>

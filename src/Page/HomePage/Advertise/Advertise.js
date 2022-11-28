@@ -24,7 +24,7 @@ const Advertise = () => {
 
     const adProducts = products.filter(p => p.advertise && !p.isSold)
 
-    if (adProducts) {
+    if (adProducts.length > 0) {
         return (
             <div className='container px-8 py-6 lg:py-12'>
                 <Title>Advertise</Title>

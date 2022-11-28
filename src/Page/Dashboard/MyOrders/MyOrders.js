@@ -64,7 +64,13 @@ const MyOrders = () => {
                                     <td>{booking.bookName}</td>
                                     <td>${booking.resalePrice}</td>
                                     <td>
-                                        available
+                                    {
+                                            booking.paid ?
+                                                <p className='text-sm font-bold text-red-600'>Sold</p>
+                                                : <p className='text-sm font-bold text-green-600'>Sold</p>
+                                                
+                                        }
+
                                     </td>
                                     <th>
                                         {

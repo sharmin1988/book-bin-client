@@ -23,8 +23,7 @@ const SignUp = () => {
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user)
-
+                
                 //--------- update user name field --------
                 const userInfo = {
                     displayName: data.name

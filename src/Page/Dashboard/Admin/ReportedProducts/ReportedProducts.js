@@ -8,12 +8,13 @@ import Loader from '../../../Shared/Loader/Loader';
 
 const ReportedProducts = () => {
     const { user } = useContext(AuthContext)
+    const { email } = user
     const [isAdmin] = useAdmin(user?.email)
 
     const { data: allReportProducts, isLoading, refetch } = useQuery({
-        queryKey: ['report',],
+        queryKey: ['report', email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/report`, {
+            const res = await fetch(`http://localhost:5000/report/${email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -40,9 +41,37 @@ const ReportedProducts = () => {
                 .then(res => res.json())
                 .then(data => {
                     console.log(data)
-                    if (data.deletedCount) {
-                        toast.success('Your reported data deleted from database successfully!!!!')
-                        refetch()
+                    if (data.deletedCount > 0) {
+                        fetch(`http://localhost:5000/findReport/${id}`, {
+                            headers: {
+                                authorization: `bearer ${localStorage.getItem('accessToken')}`
+                            }
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                console.log(data)
+                                if (data.deletedCount > 0) {
+                                    
+                                    fetch(`http://localhost:5000/findBooking/report/${id}`, {
+                                        headers: {
+                                            authorization: `bearer ${localStorage.getItem('accessToken')}`
+                                        }
+                                    })
+                                        .then(res => res.json())
+                                        .then(data => {
+                                            console.log(data)
+                                            if (data.deletedCount > 0) {
+                                                toast.success('Your reported data deleted successfully from products and bookings also!!!!')
+                                                refetch()
+                                            }
+                                            else{
+                                                toast.success(data.message)
+                                                refetch()
+                                            }
+                                        })
+                                }
+                            })
+
                     }
                 })
         }

@@ -14,9 +14,9 @@ const AllSellers = () => {
     const [isAdmin] = useAdmin(email)
 
     const { data: allSellers, isLoading, refetch } = useQuery({
-        queryKey: ['allSellers',],
+        queryKey: ['allSellers',email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/admin/allSellers`, {
+            const res = await fetch(`http://localhost:5000/admin/allSellers/${email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
