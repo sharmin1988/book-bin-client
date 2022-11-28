@@ -1,6 +1,7 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import useToken from '../../hooks/useToken';
@@ -40,36 +41,39 @@ const Login = () => {
         googleSignIn(provider)
             .then(result => {
                 const user = result.user;
-                console.log(user);
-                
-                const googleUser = {
-                    name: user?.displayName,
-                    email: user?.email,
-                    role: 'buyer'
-                }
 
-                fetch(`http://localhost:5000/users/${googleUser?.email}`, {
-                    headers:{
-                        authorization: `bearer ${localStorage.getItem('accessToken')}`
-                    }
-                })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data)
-                })
+                fetch(`http://localhost:5000/users/${user?.email}`)
+                    .then(res => res.json())
+                    .then(data => {
 
-                // fetch('http://localhost:5000/users', {
-                //     method: 'POST',
-                //     headers: {
-                //         'content-type': 'application/json'
-                //     },
-                //     body: JSON.stringify(googleUser)
-                // })
-                //     .then(res => res.json())
-                //     .then(data => {
-                //         // console.log(data);
-                //         setLoginUserEmail(user?.email)
-                //     })
+                        if (data.noUser) {
+
+                            // new user create and save in DB
+                            const googleUser = {
+                                    name: user?.displayName,
+                                    email: user?.email,
+                                    role: 'buyer'
+                                }
+                            fetch('http://localhost:5000/users', {
+                                method: 'POST',
+                                headers: {
+                                    'content-type': 'application/json'
+                                },
+                                body: JSON.stringify(googleUser)
+                            })
+                                .then(res => res.json())
+                                .then(data => {
+                                    if(data.acknowledged){
+                                        toast.success('Google user save to the Database.')
+                                      setLoginUserEmail(user?.email)  
+                                    }                                    
+                                })
+                        }
+                        else {
+                            setLoginUserEmail(data?.email)
+                        }
+
+                    })
             })
             .catch(error => {
                 console.log(error.message)
