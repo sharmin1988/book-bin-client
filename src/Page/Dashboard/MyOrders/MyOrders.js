@@ -15,7 +15,7 @@ const MyOrders = () => {
     const { data: bookings = [], isLoading } = useQuery({
         queryKey: ['bookings', email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/bookings?email=${email}`, {
+            const res = await fetch(`https://book-bin-server.vercel.app/bookings?email=${email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -33,7 +33,7 @@ const MyOrders = () => {
 
     return (
         <div>
-            <Title>my orders {bookings?.length}</Title>
+            <Title>My orders: {bookings?.length}</Title>
 
             {
                 isBuyer && <> <div className="overflow-x-auto w-full mt-8">
@@ -67,7 +67,7 @@ const MyOrders = () => {
                                     {
                                             booking.paid ?
                                                 <p className='text-sm font-bold text-red-600'>Sold</p>
-                                                : <p className='text-sm font-bold text-green-600'>Sold</p>
+                                                : <p className='text-sm font-bold text-green-600'>Available</p>
                                                 
                                         }
 

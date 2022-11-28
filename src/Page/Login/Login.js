@@ -1,5 +1,5 @@
 import { GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -18,9 +18,12 @@ const Login = () => {
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
 
-    if (token) {
-        return navigate(from, { replace: true })
-    }
+    useEffect(() => {
+        if (token) {
+            return navigate(from, { replace: true })
+        }
+    }, [token, navigate, from])
+
 
     const handelLogin = data => {
         setLoginError('')
@@ -43,18 +46,18 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
 
-                fetch(`http://localhost:5000/users/${user?.email}`)
+                fetch(`https://book-bin-server.vercel.app/users/${user?.email}`)
                     .then(res => res.json())
                     .then(data => {
                         if (data.noUser) {
 
                             // new user create and save in DB
                             const googleUser = {
-                                    name: user?.displayName,
-                                    email: user?.email,
-                                    role: 'buyer'
-                                }
-                            fetch('http://localhost:5000/users', {
+                                name: user?.displayName,
+                                email: user?.email,
+                                role: 'buyer'
+                            }
+                            fetch('https://book-bin-server.vercel.app/users', {
                                 method: 'POST',
                                 headers: {
                                     'content-type': 'application/json'
@@ -63,10 +66,10 @@ const Login = () => {
                             })
                                 .then(res => res.json())
                                 .then(data => {
-                                    if(data.acknowledged){
+                                    if (data.acknowledged) {
                                         toast.success('Google user save to the Database.')
-                                      setLoginUserEmail(user?.email)  
-                                    }                                    
+                                        setLoginUserEmail(user?.email)
+                                    }
                                 })
                         }
                         else {

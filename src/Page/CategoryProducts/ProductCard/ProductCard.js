@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 const ProductCard = ({ product, setProductBooking }) => {
 
     const { _id,
+        isSold,
         bookName,
         img,
         postDate,
@@ -30,7 +31,7 @@ const ProductCard = ({ product, setProductBooking }) => {
     const handelReport = () => {
         const proceed = window.confirm('Are you sure you want to report this product to the admin!!!')
         if (proceed) {
-            fetch(`http://localhost:5000/report`, {
+            fetch(`https://book-bin-server.vercel.app/report`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -59,16 +60,16 @@ const ProductCard = ({ product, setProductBooking }) => {
 
                 {/* product other info */}
                 <div className="bg-white w-full p-4">
-                    <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center justify-between mb-1">
                         <p className="text-black text-xs font-medium">{postDate}</p>
                         <p className="text-black text-xs font-medium">Location: {location}</p>
                     </div>
 
-                    <p className="text-gray-800  text-xl font-medium mb-2">{bookName}</p>
-                    <p className="text-gray-600  font-md text-md">
+                    <p className="text-gray-800  text-xl font-medium">{bookName}</p>
+                    <p className="text-gray-600 my-2  font-md text-md">
                         {description?.length > 100 ? description.slice(0, 100) + '...' : description}
                     </p>
-                    <p className=" text-fuchsia-700 mt-2 text-sm font-bold"> Original price: ${originalPrice}</p>
+                    <p className=" text-fuchsia-700 text-sm font-bold"> Original price: ${originalPrice}</p>
                     <p className=" text-fuchsia-700 text-sm font-bold">Resale price: ${resalePrice}</p>
 
                     <div className="flex items-center justify-between">
@@ -83,9 +84,9 @@ const ProductCard = ({ product, setProductBooking }) => {
                             <div>
                                 {
                                     sellerVerified ? <>
-                                        <div className='flex items-center justify-evenly '>
+                                        <div className='flex items-center justify-start '>
                                             <img className='h-4 w-4' src="https://cdn-icons-png.flaticon.com/128/811/811868.png" alt="" />
-                                            <p className="text-gray-800 ">{seller}</p>
+                                            <p className="text-gray-800 ml-2 ">{seller}</p>
                                         </div>
                                     </>
                                         : <p className="text-gray-800 ">{seller}</p>
@@ -95,15 +96,21 @@ const ProductCard = ({ product, setProductBooking }) => {
                             <p className="text-gray-600 ">{phone}</p>
                         </div>
                     </div>
-                    <div className='flex justify-around mt-3'>
-                        <button onClick={handelReport} className='btn btn-outline'>Report to admin</button>
-                        <label
-                            htmlFor="booking-modal"
-                            onClick={() => setProductBooking(product)}
-                            className=" btn w-1/2 px-6 font-semibold  text-sm text-white uppercase  bg-fuchsia-700 rounded-md hover:bg-stone-600 focus:outline-none focus:bg-purple-500"
-                        >Book now</label>
+                    {
+                        // Check product sold??(any user done payment for this product) OR available??
+                        isSold ?
+                            <p className='text-xl font-bold text-red-600 mt-3'>Product Sold Out</p>
+                            :
+                            <div className='flex justify-around mt-3'>
+                                <button onClick={handelReport} className='btn btn-outline'>Report to admin</button>
+                                <label
+                                    htmlFor="booking-modal"
+                                    onClick={() => setProductBooking(product)}
+                                    className=" btn w-1/2 px-6 font-semibold  text-sm text-white uppercase  bg-fuchsia-700 rounded-md hover:bg-stone-600 focus:outline-none focus:bg-purple-500"
+                                >Book now</label>
+                            </div>
+                    }
 
-                    </div>
                 </div>
             </div>
         </div>

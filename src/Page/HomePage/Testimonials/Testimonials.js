@@ -6,12 +6,12 @@ const Testimonials = () => {
             <section className="bg-white">
     <div className="relative flex">
         <div className="min-h-screen lg:w-1/3"></div>
-        <div className="hidden w-3/4 min-h-screen bg-gray-100 dark:bg-gray-800 lg:block"></div>
+        <div className="hidden w-3/4 min-h-screen bg-fuchsia-200 rounded dark:bg-gray-800 lg:block"></div>
 
         <div
             className="container flex flex-col justify-center w-full min-h-screen px-6 py-10 mx-auto lg:absolute lg:inset-x-0">
             <h1 className="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl  dark:text-white">
-                What our <span className="text-fuchsia-700">customers</span> <br/> are saying
+                What our <span className="text-fuchsia-700 font-bold">customers</span> <br/> are saying
             </h1>
 
             <div className="mt-10 lg:mt-20 lg:flex lg:items-center">

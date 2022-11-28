@@ -14,7 +14,7 @@ const AllBuyers = () => {
     const { data: allBuyers, isLoading, refetch } = useQuery({
         queryKey: ['allBuyers', email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/admin/allBuyers/${email}`, {
+            const res = await fetch(`https://book-bin-server.vercel.app/admin/allBuyers/${email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -28,7 +28,7 @@ const AllBuyers = () => {
         const proceed = window.confirm('Are u sure to delete??')
         console.log(id)
         if (proceed) {
-            fetch(`http://localhost:5000/users/${id}`, {
+            fetch(`https://book-bin-server.vercel.app/users/${id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`

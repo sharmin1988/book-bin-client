@@ -8,7 +8,7 @@ const Advertise = () => {
     const { data: products, isLoading} = useQuery({
         queryKey: ['allProducts'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/allProducts', {
+            const res = await fetch('https://book-bin-server.vercel.app/allProducts', {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -31,7 +31,7 @@ const Advertise = () => {
                 <div className="max-w-screen-xl p-5 mx-auto  text-gray-100">
                     <div className="grid grid-cols-1 gap-5 lg:grid-cols-4 sm:grid-cols-2">
                         {
-                            adProducts.map(product => <AdvertiseCard
+                            adProducts?.map(product => <AdvertiseCard
                                 key={product._id}
                                 product={product}
                             ></AdvertiseCard>

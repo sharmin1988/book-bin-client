@@ -9,14 +9,14 @@ import CustomModal from '../../../Shared/CustomModal/CustomModal';
 import Loader from '../../../Shared/Loader/Loader';
 
 const AllSellers = () => {
-    const { user } = useContext(AuthContext)
+    const { user, loading} = useContext(AuthContext)
     const { email } = user;
     const [isAdmin] = useAdmin(email)
 
     const { data: allSellers, isLoading, refetch } = useQuery({
         queryKey: ['allSellers',email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/admin/allSellers/${email}`, {
+            const res = await fetch(`https://book-bin-server.vercel.app/admin/allSellers/${email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -29,7 +29,7 @@ const AllSellers = () => {
 
     const handelSellerVerification = id => {
         console.log(id)
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`https://book-bin-server.vercel.app/users/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -45,7 +45,7 @@ const AllSellers = () => {
 
     const setSellerVerifiedInDb = id => {
         console.log(id)
-        fetch(`http://localhost:5000/users/seller/${id}`, {
+        fetch(`https://book-bin-server.vercel.app/users/seller/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -65,7 +65,7 @@ const AllSellers = () => {
         const proceed = window.confirm('Are u sure to delete??')
         console.log(id)
         if (proceed) {
-            fetch(`http://localhost:5000/users/${id}`, {
+            fetch(`https://book-bin-server.vercel.app/users/${id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -83,7 +83,7 @@ const AllSellers = () => {
 
     }
 
-    if (isLoading) {
+    if (isLoading || loading) {
         <Loader></Loader>
     }
 

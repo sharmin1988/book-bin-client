@@ -9,11 +9,11 @@ It's a used books buy/sell based projects.i use admin, seller, buyer specific da
 * `buyer dashboard`, <br/>
 --- Login with google and other signUp by default count you as `buyer`. <br/>
 
-## Project live link: 
+## Project live link: https://book-bin-client.web.app/
 
 ### `All the resources for my projects:`
-* api for categories: 
-* api for all book products using category id : 
+* api: https://book-bin-server.vercel.app/
+* api for all book products using categoryId (private route) : https://book-bin-client.web.app/categories/1
 
 * For my `basic work setup` , i install dependencies like...
 --- [tailwind](https://tailwindcss.com/)<br/>

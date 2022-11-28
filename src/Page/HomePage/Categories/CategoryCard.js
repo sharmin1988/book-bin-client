@@ -1,16 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const CategoryCard = ({category}) => {
-    const {categoryId, title, image} = category
+const CategoryCard = ({ category }) => {
+    const { categoryId, title, image } = category
     return (
-        <Link to = {`/categories/${categoryId}`}>
-            <div className="max-w-sm overflow-hidden bg-white rounded-lg shadow-lg border hover:border-fuchsia-600 mb-6 lg:mb-0">
-                <div className="px-4 py-2">
-                    <h1 className="text-xl font-bold text-gray-800 uppercase ">{title}</h1>
+        <Link to={`/categories/${categoryId}`}>
+            <div class="overflow-hidden bg-no-repeat bg-cover max-w-sm rounded-lg cursor-pointer h-96 group"
+                style={{ backgroundImage: `url(${image})` }}>
+                <div
+                    class="flex flex-col justify-center w-full max-w-xs h-full px-8 py-4 transition-opacity duration-700 opacity-0 backdrop-blur-sm bg-gray-800/60 group-hover:opacity-100">
+                    <h2 class="mt-4 text-2xl font-bold  text-white capitalize">{title}</h2>
                 </div>
-
-                <img className="w-full object-fill h-64 mt-2" src={image} alt="/"/>
             </div>
         </Link>
     );

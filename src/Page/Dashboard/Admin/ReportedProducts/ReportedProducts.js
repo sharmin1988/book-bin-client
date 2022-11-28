@@ -14,7 +14,7 @@ const ReportedProducts = () => {
     const { data: allReportProducts, isLoading, refetch } = useQuery({
         queryKey: ['report', email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/report/${email}`, {
+            const res = await fetch(`https://book-bin-server.vercel.app/report/${email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -32,7 +32,7 @@ const ReportedProducts = () => {
         const proceed = window.confirm('Are u sure to delete??')
         console.log(id)
         if (proceed) {
-            fetch(`http://localhost:5000/report/${id}`, {
+            fetch(`https://book-bin-server.vercel.app/report/${id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -42,7 +42,7 @@ const ReportedProducts = () => {
                 .then(data => {
                     console.log(data)
                     if (data.deletedCount > 0) {
-                        fetch(`http://localhost:5000/findReport/${id}`, {
+                        fetch(`https://book-bin-server.vercel.app/findReport/${id}`, {
                             headers: {
                                 authorization: `bearer ${localStorage.getItem('accessToken')}`
                             }
@@ -52,7 +52,7 @@ const ReportedProducts = () => {
                                 console.log(data)
                                 if (data.deletedCount > 0) {
                                     
-                                    fetch(`http://localhost:5000/findBooking/report/${id}`, {
+                                    fetch(`https://book-bin-server.vercel.app/findBooking/report/${id}`, {
                                         headers: {
                                             authorization: `bearer ${localStorage.getItem('accessToken')}`
                                         }

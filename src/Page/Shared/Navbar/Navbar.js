@@ -15,10 +15,20 @@ const Navbar = () => {
 
 
     const menuItems = <>
+        <li><Link to="/" className='font-semibold text-fuchsia-700 text-lg'>Home</Link></li>
         <li><Link to="/blog" className='font-semibold text-fuchsia-700 text-lg'>Blog</Link></li>
         {user?.uid ?
             <>
-                <li><Link to="/dashboard" className='font-semibold text-fuchsia-700 text-lg'>Dashboard</Link></li>
+                <li>
+                    <Link to="/dashboard"
+                        className='font-bold  text-black text-lg'>
+                       <span className='text-xs font-bold text-fuchsia-700'>hello!!</span>
+                        {user?.displayName}
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/dashboard" className='font-semibold text-fuchsia-700 text-lg'>Dashboard</Link>
+                </li>
                 <Link to='/'>
                     <button className="w-full  px-6 font-semibold py-2.5 text-sm text-white uppercase  bg-fuchsia-700 rounded-md lg:w-auto hover:bg-stone-600 btn focus:outline-none focus:bg-purple-500"
                         onClick={handleLogOut} >Sign out</button>
@@ -29,7 +39,7 @@ const Navbar = () => {
 
 
     return (
-        <div className="navbar bg-gray-100 flex justify-between lg:px-6">
+        <div className="navbar bg-fuchsia-100 flex justify-between lg:px-6">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">

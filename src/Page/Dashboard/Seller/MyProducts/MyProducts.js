@@ -16,7 +16,7 @@ const MyProducts = () => {
     const { data: products, isLoading, refetch } = useQuery({
         queryKey: ['products', email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/products?email=${email}`, {
+            const res = await fetch(`https://book-bin-server.vercel.app/products?email=${email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -32,7 +32,7 @@ const MyProducts = () => {
     const handelDelete = id => {
         const proceed = window.confirm('Are u sure to delete??')
         if (proceed) {
-            fetch(`http://localhost:5000/products/${id}`, {
+            fetch(`https://book-bin-server.vercel.app/products/${id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -51,7 +51,7 @@ const MyProducts = () => {
     }
 
     const handelAdvertise = id => {
-        fetch(`http://localhost:5000/products/${id}/?email=${email}`, {
+        fetch(`https://book-bin-server.vercel.app/products/${id}/?email=${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

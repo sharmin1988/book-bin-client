@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import PrimaryBtn from '../../../../Components/PrimaryBtn';
 import Title from '../../../../Components/Title';
 import { AuthContext } from '../../../../Context/AuthProvider/AuthProvider';
 
@@ -51,7 +52,7 @@ const AddProduct = () => {
                     }
 
                     // save product in dataBase
-                    fetch('http://localhost:5000/products', {
+                    fetch('https://book-bin-server.vercel.app/products', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',
@@ -194,7 +195,8 @@ const AddProduct = () => {
                         </div>
 
                         <div className="flex justify-end mt-6">
-                            <button className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Save</button>
+                            {/* <button className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Save</button> */}
+                            <PrimaryBtn>Add product</PrimaryBtn>
                         </div>
                     </form>
                 </section>

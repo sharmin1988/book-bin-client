@@ -15,7 +15,7 @@ const CheckoutForm = ({ booking }) => {
 
 
     useEffect(() => {
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://book-bin-server.vercel.app/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -80,7 +80,7 @@ const CheckoutForm = ({ booking }) => {
                 email,
                 bookingId: _id
             }
-            fetch('http://localhost:5000/payments', {
+            fetch('https://book-bin-server.vercel.app/payments', {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
@@ -93,7 +93,7 @@ const CheckoutForm = ({ booking }) => {
                     console.log(data)
                     if (data.insertedId) {
                         console.log(productId)
-                        fetch(`http://localhost:5000/payments/${productId}`, {
+                        fetch(`https://book-bin-server.vercel.app/payments/${productId}`, {
                             method: 'PUT',
                             headers: {
                                 authorization: `bearer ${localStorage.getItem('accessToken')}`

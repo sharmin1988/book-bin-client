@@ -5,7 +5,7 @@ const useToken = email => {
     const [tokenError, setTokenError] = useState('')
     useEffect(() => {
         if (email) {
-            fetch(`http://localhost:5000/jwt?email=${email}`)
+            fetch(`https://book-bin-server.vercel.app/jwt?email=${email}`)
                 .then(res => res.json())
                 .then(data => {
 
