@@ -31,11 +31,10 @@ const Login = () => {
         signIn(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user.email);
                 setLoginUserEmail(user?.email)
             })
             .catch(error => {
-                console.log(error.message)
+                console.error(error.message)
                 setLoginError(error.message);
 
             });
@@ -79,7 +78,7 @@ const Login = () => {
                     })
             })
             .catch(error => {
-                console.log(error.message)
+                console.error(error.message)
                 setLoginError(error.message);
             });
     }

@@ -16,7 +16,6 @@ const AddProduct = () => {
 
     const { register, handleSubmit,} = useForm();
     const handelAddProduct = data => {
-        // console.log(data)
 
         const image = data.img[0]
         const formData = new FormData();
@@ -119,7 +118,7 @@ const AddProduct = () => {
                                         required
                                         className="select select-bordered border-fuchsia-700 w-full">
                                         <option value="1">Kids Book</option>
-                                        <option value="2">Romance</option>
+                                        <option value="2">Drama</option>
                                         <option value="3">Fiction</option>
                                     </select>
                                 </label>

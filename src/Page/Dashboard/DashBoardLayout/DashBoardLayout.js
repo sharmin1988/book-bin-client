@@ -24,25 +24,24 @@ const DashBoardLayout = () => {
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 text-base-content">
+                    <ul className="menu p-4 w-80  text-white lg:text-black font-bold lg:font-semibold">
                         {
                             isAdmin && <>
-                                <li><Link to='/dashboard/admin/allSellers'>All Sellers</Link></li>
-                                <li><Link to='/dashboard/admin/allBuyers'>All Buyers</Link></li>
-                                <li><Link to='/dashboard/admin/reportedProducts'>Reported Products</Link></li>
+                                <li><Link className=' border border-fuchsia-700' to='/dashboard/admin/allSellers'>All Sellers</Link></li>
+                                <li><Link className=' border border-fuchsia-700 my-2' to='/dashboard/admin/allBuyers'>All Buyers</Link></li>
+                                <li><Link className=' border border-fuchsia-700' to='/dashboard/admin/reportedProducts'>Reported Products</Link></li>
                             </>
                         }
 
                         {
                             isSeller &&
                             <>
-                                <li><Link to='/dashboard/seller/addProduct'>Add product</Link></li>
-                                <li><Link to='/dashboard/seller/myProducts'>My products</Link></li>
-                                <li><Link to='/dashboard/seller/myBuyers'>My Buyers</Link></li>
+                                <li><Link className=' border border-fuchsia-700' to='/dashboard/seller/addProduct'>Add product</Link></li>
+                                <li><Link className=' border border-fuchsia-700 my-2' to='/dashboard/seller/myProducts'>My products</Link></li>
                             </>
                         }
 
-                        {isBuyer && <li><Link to='/dashboard/buyer/myProducts'>My Bookings</Link></li>}
+                        {isBuyer && <li><Link className=' border border-fuchsia-700' to='/dashboard/buyer/myProducts'>My Bookings</Link></li>}
                     </ul>
 
                 </div>

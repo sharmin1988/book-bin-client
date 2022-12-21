@@ -17,7 +17,6 @@ const SignUp = () => {
     }
 
     const handelSignUp = data => {
-        // console.log(data)
         setSignUPError('');
 
         createUser(data.email, data.password)
@@ -56,7 +55,6 @@ const SignUp = () => {
         })
             .then(res => res.json())
             .then(data => {
-                // console.log(data);
                 setCreatedUserEmail(email)
             })
     }

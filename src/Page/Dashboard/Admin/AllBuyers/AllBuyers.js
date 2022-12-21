@@ -26,7 +26,6 @@ const AllBuyers = () => {
 
     const handelDelete = id => {
         const proceed = window.confirm('Are u sure to delete??')
-        console.log(id)
         if (proceed) {
             fetch(`https://book-bin-server.vercel.app/users/${id}`, {
                 method: 'DELETE',
@@ -36,7 +35,6 @@ const AllBuyers = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
                     if (data.deletedCount) {
                         toast.success('Your data deleted successfully!!!!')
                         refetch()

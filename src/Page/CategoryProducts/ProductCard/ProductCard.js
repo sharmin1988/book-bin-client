@@ -41,7 +41,6 @@ const ProductCard = ({ product, setProductBooking }) => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
                     if (data.acknowledged) {
                         setProductBooking(null);
                         toast.success('Report Done!!!!')
@@ -97,16 +96,16 @@ const ProductCard = ({ product, setProductBooking }) => {
                         </div>
                     </div>
                     {
-                        // Check product sold??(any user done payment for this product) OR available??
+                        // Check product isSold(any user done payment for this product) OR available??
                         isSold ?
                             <p className='text-xl font-bold text-red-600 mt-3'>Product Sold Out</p>
                             :
-                            <div className='flex justify-around mt-3'>
-                                <button onClick={handelReport} className='btn btn-outline'>Report to admin</button>
+                            <div className='md:flex justify-around mt-3'>
+                                <button onClick={handelReport} className='btn btn-outline w-full md:w-2/5'>Report to admin</button>
                                 <label
                                     htmlFor="booking-modal"
                                     onClick={() => setProductBooking(product)}
-                                    className=" btn w-1/2 px-6 font-semibold  text-sm text-white uppercase  bg-fuchsia-700 rounded-md hover:bg-stone-600 focus:outline-none focus:bg-purple-500"
+                                    className=" btn w-full md:w-1/2 mt-3 md:mt-0 px-6 font-semibold  text-sm text-white uppercase  bg-fuchsia-700 rounded-md hover:bg-stone-600 focus:outline-none focus:bg-purple-500"
                                 >Book now</label>
                             </div>
                     }

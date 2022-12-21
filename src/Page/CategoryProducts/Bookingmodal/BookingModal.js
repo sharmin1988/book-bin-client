@@ -4,7 +4,6 @@ import PrimaryBtn from '../../../Components/PrimaryBtn';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 
 const BookingModal = ({ productBooking, setProductBooking }) => {
-    // console.log(productBooking)
     const { bookName, resalePrice, img, _id } = productBooking
     const { user } = useContext(AuthContext)
 
@@ -29,7 +28,6 @@ const BookingModal = ({ productBooking, setProductBooking }) => {
             buyerPhone,
             buyerMeetingLocation
         }
-        console.log(booking)
 
         fetch('https://book-bin-server.vercel.app/bookings', {
             method: 'POST',
@@ -41,7 +39,6 @@ const BookingModal = ({ productBooking, setProductBooking }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 if (data.acknowledged) {
                     setProductBooking(null);
                     toast.success('Booking Done!!!!')

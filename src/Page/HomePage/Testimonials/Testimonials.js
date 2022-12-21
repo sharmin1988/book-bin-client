@@ -9,12 +9,12 @@ const Testimonials = () => {
         <div className="hidden w-3/4 min-h-screen bg-fuchsia-200 rounded dark:bg-gray-800 lg:block"></div>
 
         <div
-            className="container flex flex-col justify-center w-full min-h-screen px-6 py-10 mx-auto lg:absolute lg:inset-x-0">
+            className="container flex flex-col justify-center w-full min-h-screen px-6 py-5 mx-auto lg:absolute lg:inset-x-0">
             <h1 className="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl  dark:text-white">
                 What our <span className="text-fuchsia-700 font-bold">customers</span> <br/> are saying
             </h1>
 
-            <div className="mt-10 lg:mt-20 lg:flex lg:items-center">
+            <div className="mt-10  lg:flex lg:items-center">
                 <img className="object-cover object-center w-full lg:w-[32rem] rounded-lg h-96" src="https://img.freepik.com/free-photo/side-view-pleased-brunette-woman-eyeglasses-sitting-bench-reading-book-park_231208-8081.jpg?size=626&ext=jpg&ga=GA1.2.1239272833.1664376337&semt=sph" alt=""/>
 
                 <div className="mt-8 lg:px-10 lg:mt-0">

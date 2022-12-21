@@ -40,7 +40,6 @@ const MyProducts = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
                     if (data.deletedCount) {
                         toast.success('Your data deleted successfully!!!!')
                         refetch()
@@ -59,7 +58,6 @@ const MyProducts = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 if (data.modifiedCount) {
                     toast.success('Your advertise display on homepage successfully!!!!')
                     refetch()

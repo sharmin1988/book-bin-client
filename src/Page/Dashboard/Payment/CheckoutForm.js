@@ -69,7 +69,6 @@ const CheckoutForm = ({ booking }) => {
         );
 
         if (confirmError) {
-            console.log(confirmError)
             setCardError(confirmError.message)
         }
         if (paymentIntent.status === "succeeded") {
@@ -90,9 +89,7 @@ const CheckoutForm = ({ booking }) => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
                     if (data.insertedId) {
-                        console.log(productId)
                         fetch(`https://book-bin-server.vercel.app/payments/${productId}`, {
                             method: 'PUT',
                             headers: {
@@ -101,7 +98,6 @@ const CheckoutForm = ({ booking }) => {
                         })
                             .then(res => res.json())
                             .then(data => {
-                                console.log(data)
                                 if (data.modifiedCount) {
                                     toast.success('Payment successfully done!!!')
                                     setSuccess('Thank you for your payment!!!')

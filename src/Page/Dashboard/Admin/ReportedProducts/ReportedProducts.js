@@ -30,7 +30,6 @@ const ReportedProducts = () => {
     }
     const handelDelete = id => {
         const proceed = window.confirm('Are u sure to delete??')
-        console.log(id)
         if (proceed) {
             fetch(`https://book-bin-server.vercel.app/report/${id}`, {
                 method: 'DELETE',
@@ -40,7 +39,6 @@ const ReportedProducts = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
                     if (data.deletedCount > 0) {
                         fetch(`https://book-bin-server.vercel.app/findReport/${id}`, {
                             headers: {
@@ -49,7 +47,6 @@ const ReportedProducts = () => {
                         })
                             .then(res => res.json())
                             .then(data => {
-                                console.log(data)
                                 if (data.deletedCount > 0) {
                                     
                                     fetch(`https://book-bin-server.vercel.app/findBooking/report/${id}`, {
@@ -59,7 +56,6 @@ const ReportedProducts = () => {
                                     })
                                         .then(res => res.json())
                                         .then(data => {
-                                            console.log(data)
                                             if (data.deletedCount > 0) {
                                                 toast.success('Your reported data deleted successfully from products and bookings also!!!!')
                                                 refetch()

@@ -22,13 +22,11 @@ const AllSellers = () => {
                 }
             })
             const data = await res.json()
-            console.log(data)
             return data;
         }
     })
 
     const handelSellerVerification = id => {
-        console.log(id)
         fetch(`https://book-bin-server.vercel.app/users/${id}`, {
             method: 'PUT',
             headers: {
@@ -44,7 +42,6 @@ const AllSellers = () => {
     }
 
     const setSellerVerifiedInDb = id => {
-        console.log(id)
         fetch(`https://book-bin-server.vercel.app/users/seller/${id}`, {
             method: 'PUT',
             headers: {
@@ -53,7 +50,6 @@ const AllSellers = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 if (data.modifiedCount) {
                     toast.success('Your seller is verified successfully!!!!')
                     refetch()
@@ -63,7 +59,6 @@ const AllSellers = () => {
 
     const handelDelete = id => {
         const proceed = window.confirm('Are u sure to delete??')
-        console.log(id)
         if (proceed) {
             fetch(`https://book-bin-server.vercel.app/users/${id}`, {
                 method: 'DELETE',
@@ -73,7 +68,6 @@ const AllSellers = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
                     if (data.deletedCount) {
                         toast.success('Your data deleted successfully!!!!')
                         refetch()
