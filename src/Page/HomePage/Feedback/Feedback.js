@@ -18,13 +18,13 @@ const Feedback = () => {
             <div className="max-w-6xl px-6 py-8 mx-auto">
                 <main className="relative z-20 w-full mt-4 md:flex md:items-center xl:mt-8">
                     {/* For background box */}
-                    <div data-aos="slide-left" className="absolute w-full bg-fuchsia-100 -z-10 md:h-96 rounded-2xl"></div>
+                    <div data-aos="slide-up" className="absolute w-full bg-fuchsia-100 -z-10 md:h-96 rounded-2xl"></div>
 
                     <div className="w-full p-6 bg-fuchsia-200 md:flex md:items-center rounded-2xl md:bg-transparent md:p-0 lg:px-12 md:justify-around">
 
                         <img data-aos="flip-right" className="h-20 w-24 md:mx-6 rounded-full object-cover shadow-md md:h-[32rem] md:w-80 lg:h-[32rem] lg:w-[24rem] md:rounded-2xl" src="https://img.freepik.com/free-photo/feedback-word-written-with-chalk-paper-note_144627-24512.jpg?w=826&t=st=1673854759~exp=1673855359~hmac=8ec3b2769aea8f61b7d6a30ff90d5609b90ed9438d7252ee2f2797a1d38e5442" alt="" />
 
-                        <div data-aos="slide-left" className="mt-2 md:mx-6 w-full md:w-4/5">
+                        <div data-aos="zoom-in" className="mt-2 md:mx-6 w-full md:w-4/5">
                             <div>
                                 <p className="text-xl font-bold tracking-tight mb-2">Send us your thoughts ...</p>
                             </div>
@@ -45,8 +45,8 @@ const Feedback = () => {
 
                                 </label>
 
-                                <label className="text-gray-700 block" for="name">
-                                    <textarea className="flex-1 w-full px-4 py-2 text-base text-gray-700 placeholder-gray-400 bg-white border border-gray-300 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" id="comment" placeholder="Enter your comment" name="Book bin user feedback" rows="5" cols="40" required>
+                                <label className="text-gray-700 block" >
+                                    <textarea className="flex-1 w-full px-4 py-2 text-base text-gray-700 placeholder-gray-400 bg-white border border-gray-300 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"  placeholder="Enter your comment" name="Book bin user feedback" rows="5" cols="40" required>
                                     </textarea>
                                 </label>
 

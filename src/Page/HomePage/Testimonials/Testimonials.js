@@ -10,7 +10,7 @@ const Testimonials = () => {
     },[])
 
     return (
-        <div className='container px-6 pb-3 mt-8 lg:pb-20 mx-auto'>
+        <div className='container px-6 pb-3 mt-8 lg:pb-16 mx-auto'>
             <section className="bg-white">
                 <div className="relative flex">
                     <div className="min-h-screen lg:w-1/3"></div>
